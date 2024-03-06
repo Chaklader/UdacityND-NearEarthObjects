@@ -120,7 +120,6 @@ class CloseApproach:
     Initially, the `CloseApproach` stores the primary designation of the NEO in a private
     attribute `_designation`. The `neo` attribute is set to None until it is replaced with
     the actual `NearEarthObject` instance in the `NEODatabase` constructor.
-
     """
 
     def __init__(self, **info):
