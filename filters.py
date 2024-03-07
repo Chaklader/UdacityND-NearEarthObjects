@@ -71,36 +71,102 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return a computer-readable string representation of this object."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
 class DateFilter(AttributeFilter):
+    """A subclass of AttributeFilter that filters CloseApproach objects based on their approach date.
+
+    This filter compares the approach date of a CloseApproach object with a specified date using
+    the given comparison operator.
+
+    The `get` class method retrieves the approach date from a given CloseApproach object.
+    """
+
     @classmethod
     def get(cls, approach):
+        """Get the approach date from a CloseApproach object.
+
+        :param approach: A `CloseApproach` on which to evaluate this filter.
+        :return: The approach date of the given `CloseApproach`.
+        """
         return approach.time.date()
 
 
 class DistanceFilter(AttributeFilter):
+    """A subclass of AttributeFilter that filters CloseApproach objects based on their approach distance.
+
+    This filter compares the approach distance of a CloseApproach object with a specified distance
+    using the given comparison operator.
+
+    The `get` class method retrieves the approach distance from a given CloseApproach object.
+    """
+
     @classmethod
     def get(cls, approach):
+        """Get the approach distance from a CloseApproach object.
+
+        :param approach: A `CloseApproach` on which to evaluate this filter.
+        :return: The approach distance of the given `CloseApproach`.
+        """
         return approach.distance
 
 
 class VelocityFilter(AttributeFilter):
+    """A subclass of AttributeFilter that filters CloseApproach objects based on their approach velocity.
+
+    This filter compares the approach velocity of a CloseApproach object with a specified velocity
+    using the given comparison operator.
+
+    The `get` class method retrieves the approach velocity from a given CloseApproach object.
+    """
+
     @classmethod
     def get(cls, approach):
+        """Get the approach velocity from a CloseApproach object.
+
+        :param approach: A `CloseApproach` on which to evaluate this filter.
+        :return: The approach velocity of the given `CloseApproach`.
+        """
         return approach.velocity
 
 
 class DiameterFilter(AttributeFilter):
+    """A subclass of AttributeFilter that filters CloseApproach objects based on the diameter of the associated NEO.
+
+    This filter compares the diameter of the NEO associated with a CloseApproach object with a specified
+    diameter using the given comparison operator.
+
+    The `get` class method retrieves the diameter of the NEO associated with a given CloseApproach object.
+    """
+
     @classmethod
     def get(cls, approach):
+        """Get the diameter of the NEO associated with a CloseApproach object.
+
+        :param approach: A `CloseApproach` on which to evaluate this filter.
+        :return: The diameter of the NEO associated with the given `CloseApproach`.
+        """
         return approach.neo.diameter
 
 
 class HazardousFilter(AttributeFilter):
+    """A subclass of AttributeFilter that filters CloseApproach objects based on the hazardous status of the associated NEO.
+
+    This filter compares the hazardous status of the NEO associated with a CloseApproach object with a specified
+    hazardous status using the given comparison operator.
+
+    The `get` class method retrieves the hazardous status of the NEO associated with a given CloseApproach object.
+    """
+
     @classmethod
     def get(cls, approach):
+        """Get the hazardous status of the NEO associated with a CloseApproach object.
+
+        :param approach: A `CloseApproach` on which to evaluate this filter.
+        :return: The hazardous status of the NEO associated with the given `CloseApproach`.
+        """
         return approach.neo.hazardous
 
 
