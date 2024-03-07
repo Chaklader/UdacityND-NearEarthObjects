@@ -44,7 +44,8 @@ class NearEarthObject:
 
     A `NearEarthObject` maintains a collection of its close approaches, which is
     initialized to an empty list. The `approaches` attribute can be populated with
-    `CloseApproach` objects in the `NEODatabase` constructor or through other means."""
+    `CloseApproach` objects in the `NEODatabase` constructor or through other means.
+    """
 
     def __init__(self, **info):
         """Create a new `NearEarthObject`.
@@ -83,6 +84,7 @@ class NearEarthObject:
 
     def serialize(self):
         """Return a dictionary representation of self attributes.
+
         Returns:
             [dict]: Keys associated with attributes.
         """
@@ -95,8 +97,7 @@ class NearEarthObject:
 
 
 class CloseApproach:
-    """
-    Represents a close approach to Earth by a near-Earth object (NEO).
+    """Represents a close approach to Earth by a near-Earth object (NEO).
 
     A `CloseApproach` encapsulates information about the NEO's close approach to Earth, such as:
     - Date and time (in UTC) of the closest approach
@@ -143,7 +144,8 @@ class CloseApproach:
 
     @property
     def designation(self):
-        """Get designation information
+        """Get designation information.
+
         Returns:
             [str]: Returns self._designation
         """
@@ -151,19 +153,7 @@ class CloseApproach:
 
     @property
     def time_str(self):
-        """ Returns a formatted string representation of the approach time.
-
-            The approach time is stored in the `self.time` attribute as a Python `datetime` object.
-            However, the default string representation of a `datetime` object includes seconds,
-            which are not present in the input data set.
-
-            This method converts the `datetime` object to a formatted string that omits the seconds
-            and can be used for human-readable representations and serialization to CSV and JSON files.
-
-            Returns:
-                str: A formatted string representation of the approach time, in the format:
-                     'YYYY-MM-DD HH:MM'.
-        """
+        """Returns a formatted string representation of the approach time."""
         if self.time:
             return datetime_to_str(self.time)
         return "an unknown time"
@@ -180,9 +170,9 @@ class CloseApproach:
 
     def serialize(self):
         """Return a dictionary representation of self attributes.
+
         Returns:
             [dict]: Keys associated with self attributes.
-
         """
         return {
             "datetime_utc": datetime_to_str(self.time),
